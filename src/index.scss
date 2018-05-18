@@ -1,0 +1,41 @@
+.map-container {
+  flex: 1;
+  display: block;
+  background: #ddd;
+  position: relative;
+  .map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+  }
+}
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+.fill-container {
+  height: 100%;
+  width: 100%;
+}
+
+.map-controls-container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  pointer-events: none;
+  background: transparent;
+  z-index: 10000;
+  display: flex;
+  align-items: middle;
+}
