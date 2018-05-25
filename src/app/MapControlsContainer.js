@@ -11,13 +11,13 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  const updateLeftUrl = (url) => {
-    dispatch(operations.updateLeftUrl(url));
+  const setLeftUrl = (url) => {
+    dispatch(operations.setLeftUrl(url));
   };
-  const updateRightUrl = (url) => {
-    dispatch(operations.updateRightUrl(url));
+  const setRightUrl = (url) => {
+    dispatch(operations.setRightUrl(url));
   };
-  return {updateLeftUrl, updateRightUrl};
+  return {setLeftUrl, setRightUrl};
 };
 
 const MapControlsContainer = connect(

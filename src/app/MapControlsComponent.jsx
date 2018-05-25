@@ -1,22 +1,24 @@
 // @flow
-import React, { Component } from 'react';Component
+import React, { Component } from 'react';
 
 type Props = {
 }
 
-class MapControlsComponent extends Component<Props> {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div className="map-controls-container">
-        <input placeholder="Left Map Url"/>
-        <input placeholder="Right Map Url"/>
-      </div>
-    );
-  }
+function MapControlsComponent({
+  leftUrl, rightUrl,
+  setLeftUrl, setRightUrl
+}) {
+  return (
+    <div className="map-controls-container">
+      <input className="url-input" placeholder="Left Map Url"
+             value={leftUrl}
+             onBlur={setLeftUrl}/>
+      <button className="toggle-button">Hide</button>
+      <input className="url-input" placeholder="Right Map Url"
+             value={rightUrl}
+             onBlur={setRightUrl}/>
+    </div>
+  );
 }
 
 export default MapControlsComponent;

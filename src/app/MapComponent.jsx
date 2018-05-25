@@ -70,6 +70,12 @@ class MapComponent extends Component<Props> {
       compare: new MapCompare(leftMap, rightMap, {})
     })
   }
+
+  componentDidUpdate(nextProps, nextState) {
+    /* if (nextState.leftUrl) {
+     * }
+     * if (nextState.rightUrl)*/
+  }
 }
 
 export default MapComponent;
