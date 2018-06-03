@@ -1,3 +1,4 @@
+//@flow
 import reducer from './reducers';
 export { default as operations } from './operations';
 

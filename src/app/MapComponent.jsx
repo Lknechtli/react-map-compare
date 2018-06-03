@@ -23,15 +23,25 @@ const basemapLayers = [{
 }];
 
 type Props = {
+  leftUrl: string,
+  rightUrl: string
+};
+
+type State = {
+  leftMap: ?MapboxGL.Map,
+  rightMap: ?MapboxGL.Map,
+  compare: ?MapCompare
 }
 
-class MapComponent extends Component<Props> {
-  constructor(props) {
-    super(props);
-    this.state = {
+class MapComponent extends Component<Props, State> {
+  state = {
       leftMap: null,
       rightMap: null,
-      compare: null};
+      compare: null
+  };
+
+  constructor(props: Props) {
+    super(props);
   }
 
   render() {
@@ -71,10 +81,49 @@ class MapComponent extends Component<Props> {
     })
   }
 
-  componentDidUpdate(nextProps, nextState) {
-    /* if (nextState.leftUrl) {
-     * }
-     * if (nextState.rightUrl)*/
+  componentDidUpdate(nextProps: Props, nextState: State) {
+    if (nextState.leftMap != null) {
+      const leftMap = nextState.leftMap;
+      if (nextProps.leftUrl != null) {
+        const leftUrl = nextProps.leftUrl;
+        if (leftMap.getSource('compare')) {
+          leftMap.removeLayer('compare');
+          leftMap.removeSource('compare');
+        }
+        leftMap.addSource('compare', {
+          type: 'raster',
+          tiles: [leftUrl]
+        });
+        leftMap.addLayer({
+          id: 'compare',
+          type: 'raster',
+          source: 'compare',
+          tileSize: 256
+        });
+        console.log("Left layer set");
+      }
+    }
+    if (nextState.rightMap != null) {
+      const rightMap = nextState.rightMap;
+      if (nextProps.rightUrl != null) {
+        const rightUrl = nextProps.rightUrl;
+        if (rightMap.getSource('compare')) {
+          rightMap.removeLayer('compare');
+          rightMap.removeSource('compare');
+        }
+        rightMap.addSource('compare', {
+          type: 'raster',
+          tiles: [rightUrl]
+        });
+        rightMap.addLayer({
+          id: 'compare',
+          type: 'raster',
+          source: 'compare',
+          tileSize: 256
+        });
+        console.log("Right layer set");
+      }
+    }
   }
 }
 

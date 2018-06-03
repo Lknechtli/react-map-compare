@@ -1,3 +1,4 @@
+//@flow
 import Creators from './actions';
 
 const setLeftUrl = Creators.setLeftUrl;

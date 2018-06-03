@@ -2,12 +2,16 @@
 import React, { Component } from 'react';
 
 type Props = {
+  leftUrl: string,
+  rightUrl: string,
+  setLeftUrl: () => mixed,
+  setRightUrl: () => mixed
 }
 
 function MapControlsComponent({
   leftUrl, rightUrl,
   setLeftUrl, setRightUrl
-}) {
+} : Props) {
   return (
     <div className="map-controls-container">
       <input className="url-input" placeholder="Left Map Url"

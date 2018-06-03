@@ -1,11 +1,17 @@
+//@flow
 import types from './types.js';
 
-const setLeftUrl = (value) => ({
+export type UrlAction = {
+  type: string,
+  value: any
+};
+
+const setLeftUrl = (value: string): UrlAction => ({
   type: types.SET_LEFT_URL,
   value
 });
 
-const setRightUrl = (value) => ({
+const setRightUrl = (value: string): UrlAction => ({
   type: types.SET_RIGHT_URL,
   value
 });
