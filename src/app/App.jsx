@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 import MapContainer from './MapContainer.js';
 import MapControlsContainer from './MapControlsContainer.js';
 

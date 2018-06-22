@@ -40,9 +40,9 @@ class MapComponent extends Component<Props, State> {
       compare: null
   };
 
-  constructor(props: Props) {
-    super(props);
-  }
+  // constructor(props: Props) {
+  //   super(props);
+  // }
 
   render() {
     return (
@@ -81,44 +81,45 @@ class MapComponent extends Component<Props, State> {
     })
   }
 
-  componentDidUpdate(nextProps: Props, nextState: State) {
-    if (nextState.leftMap != null) {
-      const leftMap = nextState.leftMap;
-      if (nextProps.leftUrl != null) {
-        const leftUrl = nextProps.leftUrl;
-        if (leftMap.getSource('compare')) {
-          leftMap.removeLayer('compare');
-          leftMap.removeSource('compare');
+  componentDidUpdate(prevProps: Props, prevState: State) {
+    if (this.state.leftMap != null) {
+      const leftMap = this.state.leftMap;
+      if (this.props.leftUrl != null && this.props.leftUrl.length && this.props.leftUrl !== prevProps.leftUrl) {
+        const leftUrl = this.props.leftUrl;
+        if (leftMap.getSource('compareL')) {
+          leftMap.removeLayer('compareL');
+          leftMap.removeSource('compareL');
         }
-        leftMap.addSource('compare', {
+        leftMap.addSource('compareL', {
           type: 'raster',
           tiles: [leftUrl]
         });
         leftMap.addLayer({
-          id: 'compare',
+          id: 'compareL',
           type: 'raster',
-          source: 'compare',
+          source: 'compareL',
           tileSize: 256
         });
         console.log("Left layer set");
       }
     }
-    if (nextState.rightMap != null) {
-      const rightMap = nextState.rightMap;
-      if (nextProps.rightUrl != null) {
-        const rightUrl = nextProps.rightUrl;
-        if (rightMap.getSource('compare')) {
-          rightMap.removeLayer('compare');
-          rightMap.removeSource('compare');
+
+    if (this.state.rightMap != null) {
+      const rightMap = this.state.rightMap;
+      if (this.props.rightUrl != null && this.props.rightUrl.length && this.props.rightUrl !== prevProps.leftUrl) {
+        const rightUrl = this.props.rightUrl;
+        if (rightMap.getSource('compareR')) {
+          rightMap.removeLayer('compareR');
+          rightMap.removeSource('compareR');
         }
-        rightMap.addSource('compare', {
+        rightMap.addSource('compareR', {
           type: 'raster',
           tiles: [rightUrl]
         });
         rightMap.addLayer({
-          id: 'compare',
+          id: 'compareR',
           type: 'raster',
-          source: 'compare',
+          source: 'compareR',
           tileSize: 256
         });
         console.log("Right layer set");

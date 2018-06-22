@@ -11,11 +11,11 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  const setLeftUrl = (url) => {
-    dispatch(operations.setLeftUrl(url));
+  const setLeftUrl = (event) => {
+    dispatch(operations.setLeftUrl(event.target.value));
   };
-  const setRightUrl = (url) => {
-    dispatch(operations.setRightUrl(url));
+  const setRightUrl = (event) => {
+    dispatch(operations.setRightUrl(event.target.value));
   };
   return {setLeftUrl, setRightUrl};
 };
