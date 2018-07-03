@@ -53,7 +53,7 @@ class MapComponent extends Component<Props, State> {
     );
   }
 
-  componentDidMount() {
+  componentDidMount(nextProps: any, nextState: any) {
     const leftMap = new MapboxGL.Map({
       container: 'left',
       style: {
@@ -78,7 +78,7 @@ class MapComponent extends Component<Props, State> {
       leftMap,
       rightMap,
       compare: new MapCompare(leftMap, rightMap, {})
-    })
+    });
   }
 
   componentDidUpdate(prevProps: Props, prevState: State) {
